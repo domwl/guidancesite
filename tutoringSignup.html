@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SLHS Tutoring Signup</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' rel='stylesheet' type='text/css'>
+
+		<style type="text/css">
+			body{
+				font-family: Roboto;
+			}
+
+			.expandable{
+				display: none;
+			}
+
+			.expandBar{
+				background-color: blue;
+				color: white;
+				padding: 0.3em;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<h1>SLHS Tutoring Signup</h1>
+		<form action = "processTutorForm.php" method = "POST">
+
+				<input type = "radio" value ="tutor" name = "person">I'm a tutor<br>
+				<input type = "radio" value = "tutoree" name = "person">I want to be tutored<br><br>
+			
+
+			Full name: <input><br>
+			ID number: <input><br>
+			Email: <input><br><br>
+
+			What subjects?<br>
+
+			<div class = "expandBar">English:</div>
+			<table class = "expandable">
+				<tr>
+					<td><input type = "checkbox">English 9</td>
+					<td><input type = "checkbox">Honors English 9</td>
+					<td><input type = "checkbox">Applied English 9</td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox">English 10</td>
+					<td><input type = "checkbox">Honors English 10</td>
+					<td><input type = "checkbox">Applied English 10</td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox">English 11</td>
+					<td><input type = "checkbox">Honors English 11</td>
+					<td><input type = "checkbox">Applied English 11</td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox">English 12</td>
+					<td><input type = "checkbox">Honors English 12</td>
+					<td><input type = "checkbox">Honors English 12-Online</td>
+					<td><input type = "checkbox">Applied English 12</td>
+					<td><input type = "checkbox">English Communications 12</td>
+					<td><input type = "checkbox">AP Literature</td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox">Yearbook</td>
+					<td><input type = "checkbox">Public Speaking</td>
+					<td><input type = "checkbox">Creative Writing</td>
+					<td><input type = "checkbox">Keystone Literature</td>
+					<td><input type = "checkbox">Mass Media I</td>
+					<td><input type = "checkbox">Mass Media II</td>
+					<td><input type = "checkbox">Intro to Journalism</td>
+					<td><input type = "checkbox">Newspaper Journalism</td>
+				</tr>
+			</table><br>
+
+			<div class = "expandBar">Mathematics:</div>
+			<table class = "expandable">
+				<tr>
+					<td><input type = "checkbox">Algebra I</td>
+					<td><input type = "checkbox">Applied Algebra I</td>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+					<td><input type = "checkbox">Intro to Computer Science I</td>
+					<td><input type = "checkbox">Economic Applications of Mathematics</td>
+				</tr>
+			</table><br>
+
+			What Spartan period?<br>
+
+			<input type = "checkbox">Day 1<br>
+			<input type = "checkbox">Day 2<br>
+			<input type = "checkbox">Day 3<br>
+			<input type = "checkbox">Day 4<br>
+			<input type = "checkbox">Day 5<br>
+			<input type = "checkbox">Day 6<br>
+
+			<button>Submit</button>
+		</form>
+
+
+		<!--BEGIN SCRIPT-->
+		<script type="text/javascript">
+			
+		</script>
+		<!--END SCRIPT-->
+
+	</body>
+</html>
