@@ -7,8 +7,8 @@
 <p>
 <?php
 	$servername = "localhost";
-	$username = "username";
-	$password = "password";
+	$username = "qiand";
+	$password = "1755440";
 	$dbName = "tutoringSignup";
 	
 	// Create connection
@@ -20,8 +20,12 @@
 	// Check connection 	
 	if ($conn->connect_error)
 		die("Connection failed: " . $conn->connect_error);
-	echo "Connected successfully";
 	
+	
+	
+	
+	
+	/*
 	$result = $conn->query("SELECT * FROM tutors");
 	if ($result->num_rows > 0)
    		while($row = $result->fetch_assoc())
@@ -29,7 +33,7 @@
 	else
 		echo "0 results";
 	$conn->close();
-
+	*/
 ?>
 </p>
 
