@@ -26,7 +26,7 @@ if(isset($_COOKIE["tutorID"]))
 	$connection->query($command);
 	unset($_COOKIE["studentID"]);
 }
-else if(isset($_COOKIE["studentID"])
+else if(isset($_COOKIE["studentID"]))
 {
 	$tutorTable = $connection->query("SELECT * FROM Tutors");
 }
