@@ -28,7 +28,7 @@
 	$subkects = array();
 	
 	$count = 0;
-	for($i = 0; $i < count(tmpTimes); i++) {
+	for($i = 0; $i < count(tmpTimes); $i++) {
 		if(tmpTimes[$i] == true) {	
 			$times[$count] = $timeKey[$i];
 		}
