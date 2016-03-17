@@ -78,6 +78,10 @@
 				cursor:pointer; cursor:hand;
 			}
 
+			input{
+				background-color: white;
+			}
+
 		</style>
 
 		<!--BEGIN SCRIPT-->
@@ -104,9 +108,9 @@
 				<input type = "radio" value = "tutoree" name = "person"> I want to be tutored<br><br>
 			
 
-			Full name: <input name = "name"><br>
-			ID number: <input name = "ID"><br>
-			Email: <input name = "email"><br><br>
+			Full name: <input name = "name" class = "fill"><br>
+			ID number: <input name = "ID" class = "fill"><br>
+			Email: <input name = "email" class = "fill"><br><br>
 
 			What subjects? (Click to expand)<br>
 
@@ -139,43 +143,50 @@
 			<div class = "expandBar" onclick = "toggleVisibility('mathSub');">Mathematics:</div>
 			<table class = "expandable" id = "mathSub" name = "subjects-math">
 				<tr>
-					<td><input type = "checkbox" name = "subject[]">Algebra I</td>
-					<td><input type = "checkbox" name = "subject[]">Applied Algebra I</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Algebra I</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Applied Algebra I</td>
 				</tr>
 				<tr>
-					<td><input type = "checkbox" name = "subject[]">Algebra II</td>
-					<td><input type = "checkbox" name = "subject[]">Honors Algebra II</td>
-					<td><input type = "checkbox" name = "subject[]">Applied Algebra II</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Algebra II</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Honors Algebra II</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Applied Algebra II</td>
 				</tr>
 				<tr>
-					<td><input type = "checkbox" name = "subject[]">Geometry</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Geometry</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Honors Geometry</td>
 				</tr>
 				<tr>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Precalculus</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Honors Precalculus</td>
 				</tr>
 				<tr>
-					<td><input type = "checkbox" name = "subject[]">College Algebra</td>
-					<td><input type = "checkbox" name = "subject[]">Intro to Computer Science I</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">AP Calculus</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Calculus</td>
+				</tr>
+				<tr>
+					<td><input type = "checkbox" name = "subject[]" value = "true">College Algebra</td>
+					<td><input type = "checkbox" name = "subject[]" value = "true">Intro to Computer Science I</td>
 				</tr>
 			</table><br>
 
 			<div class = "expandBar" onclick = "toggleVisibility('sciSub');">Science:</div>
 			<table class = "expandable" id = "sciSub" name = "subjects-science">
-				<tr>
+				<tr></tr>
 			</table><br>
 
 			<div class = "expandBar" onclick = "toggleVisibility('socSub');">Social Studies:</div>
 			<table class = "expandable" id = "socSub" name = "subjects-socstud">
-				<tr>
+				<tr></tr>
 			</table><br>
 
 			What Spartan period?<br>
 
-			<input type = "checkbox">Day 1<br>
-			<input type = "checkbox">Day 2<br>
-			<input type = "checkbox">Day 3<br>
-			<input type = "checkbox">Day 4<br>
-			<input type = "checkbox">Day 5<br>
-			<input type = "checkbox">Day 6<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 1<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 2<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 3<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 4<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 5<br>
+			<input type = "checkbox" name = "time[]" value = "true">Day 6<br>
 
 			<br>
 
