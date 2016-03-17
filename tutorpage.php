@@ -1,16 +1,16 @@
 <?php
 
 if(!isset($_COOKIE["signin"]) && !isset($_POST["username"]))
-	die("Please login:<br/><form action='' method='post'><table><tr><td>Username:</td><td><input type='text' name='username'/></td></tr><tr><td>Password:</td><td><input type='password' name='password'/></td></tr></table></form>");
+	die("Please login:<br/><form action='' method='post'><table><tr><td>Username:</td><td><input type='text' name='username'/></td></tr><tr><td>Password:</td><td><input type='password' name='password'/></td></tr><tr><td></td><td><input type='submit' value='Submit'/></td></table></form>");
 else if(isset($_POST["username"]))
 {
 	if($_POST["username"] == "kelly" && $_POST["password"] == "12345")
 		setcookie("signin", "1");
 }
 
-$serverName = "localhost";
-$serverUsername = "username";
-$serverPassword = "password";
+$serverName = "lists.slsd.org";
+$serverUsername = "qiand";
+$serverPassword = "1755440";
 $databaseName = "tutoringSignup";
 
 $connection = new mysqli($serverName, $serverUsername, $serverPassword, $databaseName);
@@ -60,19 +60,31 @@ function tutorConfirm(tutorID)
 <body>
 
 <h1>Tutors and Students</h1>
+<?php 
+	
+	$tutorTable = $connection->query("SELECT * FROM Tutors");
+
+	while ($row = mysqli_fetch_assoc($tutorTable)) {
+		echo $row['ID_number'] . $row['Name'] . $row['Email'] . $row['laptopNumber'].'\n';
+	}
+
+?>
+
+<!--
 
 <table>
 <tr>
+
 <td>Name</td><td>ID</td><td>Email</td>
 </tr>
-<?php
+<?php /*
 
 while ($row = mysqli_fetch_assoc($studentTable))
 {
 	echo "<tr onclick=\"setTutorListCookie('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
 }
 
-if(isset($_COOKIE["studentID"])
+if(isset($_COOKIE["studentID"]))
 {
 	echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
 	$studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
@@ -101,8 +113,8 @@ while($row = $session->fetch_assoc() && $tRow = $sessionTimes->fetch_assoc() && 
 	echo "<tr><td>" . $session["Tutor_ID"] . "</td><td>" . $session["StudentID"] . "</td><td>" . $sessionTimes["Times"] . "</td><td>" . $sessionSubjects["Subjects"] . "</td></tr>";
 }
 
-?>
+*/?>
 </table>
-
+-->
 </body>
 </html>
