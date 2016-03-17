@@ -59,21 +59,22 @@ function tutorConfirm(tutorID)
 
 <body>
 
-<h1>sssdsadasdasdsas</h1>
+<h1>Tutors and Students</h1>
 
 <table>
-<td>
-<tr>Name</tr><tr>ID</tr><tr>Email</tr>
-</td>
+<tr>
+<td>Name</td><td>ID</td><td>Email</td>
+</tr>
 <?php
 
 while ($row = mysqli_fetch_assoc($studentTable))
 {
-	echo "<td onclick=\"setTutorListCookie('" . $row["id"] . "')\"><tr>" . $row["name"] . "</tr><tr>" . $row["id"] . "</tr><tr>" . $row["email"] . "</tr></td>";
+	echo "<tr onclick=\"setTutorListCookie('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
 }
 
 if(isset($_COOKIE["studentID"])
 {
+	echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
 	$studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
 	$studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
 	while ($row = mysqli_fetch_assoc($tutorTable))
@@ -85,8 +86,19 @@ if(isset($_COOKIE["studentID"])
 				while($sSRow = $studentSubjectsTable->fetch_assoc())
 					while($tSRow = $tutorsSubjectsTable->fetch_assoc())
 						if($sTRow["Time"] == $tTRow["Time"] && $sSRow["Subject"] && $tSRow["Subject"])
-							echo "<td onclick=\"tutorConfirm('" . $row["id"] . "')\"><tr>" . $row["name"] . "</tr><tr>" . $row["id"] . "</tr><tr>" . $row["email"] . "</tr></td>";
+							echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
 	}
+}
+
+$session = $connection->query("SELECT * FROM Sessions");
+$sessionTimes = $connection->query("SELECT Times FROM Sessions");
+$sessionSubjects = $connection->query("SELECT Subjects FROM Sessions");
+
+echo "</table><table><tr><td>Tutor ID</td><td>Student ID</td><td>Times</td><td>Subjects</td></tr>";
+
+while($row = $session->fetch_assoc() && $tRow = $sessionTimes->fetch_assoc() && $sRow = $sessionSubjects->fetch_assoc())
+{
+	echo "<tr><td>" . $session["Tutor_ID"] . "</td><td>" . $session["StudentID"] . "</td><td>" . $sessionTimes["Times"] . "</td><td>" . $sessionSubjects["Subjects"] . "</td></tr>";
 }
 
 ?>
