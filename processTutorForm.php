@@ -5,7 +5,7 @@
 <body>
 
 <?php
-	$servername = "localhost";
+	$servername = "lists.slsd.org";
 	$username = "qiand";
 	$password = "1755440";
 	$dbName = "tutoringSignup";
