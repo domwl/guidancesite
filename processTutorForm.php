@@ -37,7 +37,6 @@
 		if(tmpSubjects[$i] == true) {	
 			$subjects[$count] = $subjectKey[$i];
 		}
-
 	}
 
 
