@@ -35,9 +35,9 @@
 	}
 	
 	$count = 0;
-	for($i = 0; $i < count($tmpSubjects); $i++) {
-		if($tmpSubjects[$i] == true) {	
-			$subjects[$count] = $i;
+	for($j = 0; $j < count($tmpSubjects); $j++) {
+		if($tmpSubjects[$i] == "true") {	
+			$subjects[$count] = $j;
 		}
 	}
 
