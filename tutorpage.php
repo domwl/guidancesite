@@ -75,13 +75,17 @@ while ($row = mysqli_fetch_assoc($studentTable))
 if(isset($_COOKIE["studentID"])
 {
 	$studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
+	$studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
 	while ($row = mysqli_fetch_assoc($tutorTable))
 	{
 		$tutorsTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $row["id"]);
-		while($sRow = $studentTimesTable->fetch_assoc())
-			while($tRow = $tutorsTimesTable->fetch_assoc())
-				if($sRow["Time"] == $tRow["Time"])
-					echo "<td onclick=\"tutorConfirm('" . $row["id"] . "')\"><tr>" . $row["name"] . "</tr><tr>" . $row["id"] . "</tr><tr>" . $row["email"] . "</tr></td>";
+		$tutorsSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $row["id"]);
+		while($sTRow = $studentTimesTable->fetch_assoc())
+			while($tTRow = $tutorsTimesTable->fetch_assoc())
+				while($sSRow = $studentSubjectsTable->fetch_assoc())
+					while($tSRow = $tutorsSubjectsTable->fetch_assoc())
+						if($sTRow["Time"] == $tTRow["Time"] && $sSRow["Subject"] && $tSRow["Subject"])
+							echo "<td onclick=\"tutorConfirm('" . $row["id"] . "')\"><tr>" . $row["name"] . "</tr><tr>" . $row["id"] . "</tr><tr>" . $row["email"] . "</tr></td>";
 	}
 }
 
