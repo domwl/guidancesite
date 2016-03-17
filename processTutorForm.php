@@ -25,17 +25,17 @@
 	$tmpSubjects = $_POST["subjects"];
 
 	$times = array();
-	$subkects = array();
+	$subjects = array();
 	
 	$count = 0;
-	for($i = 0; $i < count(tmpTimes); $i++) {
-		if($tmpTimes[$i] == true) {	
+	for($i = 0; $i < count($tmpTimes); $i++) {
+		if($tmpTimes[$i] == "true") {	
 			$times[$count] = $timeKey[$i];
 		}
 	}
 	
 	$count = 0;
-	for($i = 0; $i < count(tmpSubjects); i++) {
+	for($i = 0; $i < count($tmpSubjects); i++) {
 		if($tmpSubjects[$i] == true) {	
 			$subjects[$count] = $i;
 		}
@@ -55,11 +55,11 @@
  
 	$conn->query("INSERT INTO ".($isTutor)."s"." VALUES(".$id.",".$name.",".$email.")";
 
-	for($i = 0; $i < count(times); i++) {
+	for($i = 0; $i < count($times); i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." VALUES(".$id.",".$times[$i].")";
 	}
 	
-	for($i = 0; $i < count(subjects); i++) {
+	for($i = 0; $i < count($subjects); i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." VALUES(".$id.",".$subjects[$i].")";
 	}
 
