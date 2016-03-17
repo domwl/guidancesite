@@ -21,7 +21,7 @@
 	$email = $_POST["email"];	
 	$isTutor = $_POST["person"]=="tutor"?"Tutor":"Request";
 	
-	$tmpTimes = $_POST["times"];
+	$tmpTimes = $_POST["time"];
 	$tmpSubjects = $_POST["subject"];
 
 	$times = array();
