@@ -55,11 +55,11 @@
  
 	$conn->query("INSERT INTO ".($isTutor)."s"." VALUES(".$id.",".$name.",".$email.")");
 
-	for($i = 0; $i < count($times); i++) {
+	for($i = 0; $i < count($times); $i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." VALUES(".$id.",".$times[$i].")");
 	}
 	
-	for($i = 0; $i < count($subjects); i++) {
+	for($i = 0; $i < count($subjects); $i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." VALUES(".$id.",".$subjects[$i].")");
 	}
 
