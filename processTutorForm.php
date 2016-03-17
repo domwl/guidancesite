@@ -22,7 +22,7 @@
 	$isTutor = $_POST["person"]=="tutor"?"Tutor":"Request";
 	
 	$tmpTimes = $_POST["times"];
-	$tmpSubjects = $_POST["subjects"];
+	$tmpSubjects = $_POST["subject"];
 
 	$times = array();
 	$subjects = array();
