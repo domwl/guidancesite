@@ -49,6 +49,10 @@
 		die("Connection failed: " . $conn->connect_error);
 	
 	$conn->query("DELETE FROM ".($isTutor)."s"." WHERE ID_number=".$id);
+	
+	echo $id;
+	echo $conn->query("SELECT * FROM ".($isTutor)."Times"."WHERE ID_number=".$id);
+
 	$conn->query("DELETE FROM ".($isTutor)."Times"."WHERE ID_number=".$id);
 	$conn->query("DELETE FROM ".($isTutor)."Subjects"."WHERE ID_number=".$id);
  
