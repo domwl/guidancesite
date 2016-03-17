@@ -29,7 +29,7 @@
 	
 	$count = 0;
 	for($i = 0; $i < count(tmpTimes); $i++) {
-		if(tmpTimes[$i] == true) {	
+		if($tmpTimes[$i] == true) {	
 			$times[$count] = $timeKey[$i];
 		}
 	}
