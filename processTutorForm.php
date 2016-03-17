@@ -12,12 +12,14 @@
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbName);
+
+
 	
 	
 	$id =(int) $_POST["ID"];
 	$name = $_POST["name"];
 	$email = $_POST["email"];	
-	$isTutor = $_POST["person"]=="tutor"?"Tutor":"Request"
+	$isTutor = $_POST["person"]=="tutor"?"Tutor":"Request";
 	
 	$tmpTimes = $_POST["times"];
 	$tmpSubjects = $_POST["subjects"];
@@ -35,7 +37,7 @@
 	$count = 0;
 	for($i = 0; $i < count(tmpSubjects); i++) {
 		if(tmpSubjects[$i] == true) {	
-			$subjects[$count] = $subjectKey[$i];
+			$subjects[$count] = $i;
 		}
 	}
 
