@@ -84,18 +84,20 @@ function tutorConfirm(tutorID)
         echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
         $studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
         $studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
-        while ($row = mysqli_fetch_assoc($tutorTable))
-        {
-            $tutorsTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $row["id"]);
-            $tutorsSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $row["id"]);
-    
+		
+   		while ($timesRow = mysqli_fetch_assoc($studentTimesTable)) {
+			$tomatch = $tomatch ."'" $timesRow["Time"] + "',";
+		}
+		$tomatch = substr($tomatch, 0, strlen($tomatch) -1);
 			
-			$tutors = $connection->query($tutorQuery);
+		$timeMatches = "Select * FROM Tutors
+						INNER JOIN (SELECT ID_Number, Count(*) AS Availability FROM TutorTimes WHERE Time IN (".$tomatch.") GROUP BY ID_number) counts
+						ON counts.ID_number = Tutors.ID_number";
+
 			
-			while($tutorRow = mysqli_fetch_assoc($tutorTable)
-			
-			echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
-        }
+		while($row = mysqli_fetch_assoc($timeMatches) {
+			echo "<tr onclick=\"tutorConfirm('" . $row["ID_number"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["ID_number"] . "</td><td>" . $row["email"] . "</td></tr>";
+		}
     }
     
     
