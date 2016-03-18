@@ -27,6 +27,8 @@
 	$count = 0;
 	for($i = 0; $i < count($tmpTimes); $i++) {
 		if($tmpTimes[$i] == "true") {	
+			echo "ADGASDGASD";
+
 			$times[$count] = $timeKey[$i];
 		}
 	}
@@ -34,10 +36,11 @@
 	$count = 0;
 	for($j = 0; $j < count($tmpSubjects); $j++) {
 		if($tmpSubjects[$j] == "true") {	
+			echo "ADGASDGASD";
+
 			$subjects[$count] = $j;
 		}
 	}
-
 
 	
 	
@@ -53,7 +56,6 @@
  
 	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '" . $name . "' , '" . $email . "')");
 	
-	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '".$name."' , '" . $email . "') <br/>";
 
 	for($i = 0; $i < count($times); $i++) {		
 		echo "INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id. "', '" .$times[$i] . "') <br/>";
