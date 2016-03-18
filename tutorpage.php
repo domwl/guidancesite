@@ -15,7 +15,7 @@ $databaseName = "tutoringSignup";
 
 $connection = new mysqli($serverName, $serverUsername, $serverPassword, $databaseName);
 
-$studentTable = $connection->query("SELECT * FROM Requests");
+$studentTable = $connection->query("SELECT * FROM Requests ORDER BY Name");
 // $studentTimesTable = $connection->query("SELECT * FROM RequestTimes");
 // $studentSubjectsTable = $connection->query("SELECT * FROM RequestSubjects");
 
@@ -26,11 +26,6 @@ if(isset($_COOKIE["tutorID"]))
 	$connection->query($command);
 	unset($_COOKIE["studentID"]);
 }
-else if(isset($_COOKIE["studentID"]))
-{
-	$tutorTable = $connection->query("SELECT * FROM Tutors");
-}
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -60,61 +55,53 @@ function tutorConfirm(tutorID)
 <body>
 
 <h1>Tutors and Students</h1>
-<?php 
+
+<?php /*
 	
 	$tutorTable = $connection->query("SELECT * FROM Tutors");
 
 	while ($row = mysqli_fetch_assoc($tutorTable)) {
 		echo $row['ID_number'] . $row['Name'] . $row['Email'] . $row['laptopNumber'].'\n';
 	}
-
+*/
 ?>
 
-<!--
-
 <table>
-<tr>
-
-<td>Name</td><td>ID</td><td>Email</td>
-</tr>
-<?php /*
-
-while ($row = mysqli_fetch_assoc($studentTable))
-{
-	echo "<tr onclick=\"setTutorListCookie('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
-}
-
-if(isset($_COOKIE["studentID"]))
-{
-	echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
-	$studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
-	$studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
-	while ($row = mysqli_fetch_assoc($tutorTable))
-	{
-		$tutorsTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $row["id"]);
-		$tutorsSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $row["id"]);
-		while($sTRow = $studentTimesTable->fetch_assoc())
-			while($tTRow = $tutorsTimesTable->fetch_assoc())
-				while($sSRow = $studentSubjectsTable->fetch_assoc())
-					while($tSRow = $tutorsSubjectsTable->fetch_assoc())
-						if($sTRow["Time"] == $tTRow["Time"] && $sSRow["Subject"] && $tSRow["Subject"])
-							echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
-	}
-}
-
-$session = $connection->query("SELECT * FROM Sessions");
-$sessionTimes = $connection->query("SELECT Times FROM Sessions");
-$sessionSubjects = $connection->query("SELECT Subjects FROM Sessions");
-
-echo "</table><table><tr><td>Tutor ID</td><td>Student ID</td><td>Times</td><td>Subjects</td></tr>";
-
-while($row = $session->fetch_assoc() && $tRow = $sessionTimes->fetch_assoc() && $sRow = $sessionSubjects->fetch_assoc())
-{
-	echo "<tr><td>" . $session["Tutor_ID"] . "</td><td>" . $session["StudentID"] . "</td><td>" . $sessionTimes["Times"] . "</td><td>" . $sessionSubjects["Subjects"] . "</td></tr>";
-}
-
-*/?>
+    <tr>
+        <td>Name</td>
+        <td>ID</td>
+        <td>Email</td>
+    </tr>
+	<?php 
+    
+    while ($row = mysqli_fetch_assoc($studentTable)) {
+ 	   echo "<tr onclick=\"setTutorListCookie('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
+    }
+    
+	
+    if(isset($_COOKIE["studentID"]))
+    {
+        echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
+        $studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
+        $studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
+		$tutorTable
+        while ($row = mysqli_fetch_assoc($tutorTable))
+        {
+            $tutorsTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $row["id"]);
+            $tutorsSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $row["id"]);
+            while($sTRow = $studentTimesTable->fetch_assoc())
+                while($tTRow = $tutorsTimesTable->fetch_assoc())
+                    while($sSRow = $studentSubjectsTable->fetch_assoc())
+                        while($tSRow = $tutorsSubjectsTable->fetch_assoc())
+                            if($sTRow["Time"] == $tTRow["Time"] && $sSRow["Subject"] && $tSRow["Subject"])
+                                echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
+        }
+    }
+    
+    
+    ?>
 </table>
--->
+<br/>
+<a href="currentSessions.php">Click here to view the current sessions</a>
 </body>
 </html>
