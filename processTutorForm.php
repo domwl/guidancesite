@@ -11,7 +11,10 @@
 	$dbName = "tutoringSignup"; 
 	
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbName);	
+	$conn = new mysqli($servername, $username, $password, $dbName);
+
+
+	
 	
 	$id =(int) $_POST["ID"];
 	$name = $_POST["name"];
@@ -51,19 +54,15 @@
 	$conn->query("DELETE FROM ".($isTutor)."Subjects"." WHERE ID_number=".$id);
  
  
-	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '" . $name . "' , '" . $email . "')");
-	
-	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '".$name."' , '" . $email . "') <br/>";
+	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."','".$name."','".$email."','laptop')");
 
-	for($i = 0; $i < count($times); $i++) {		
-		echo "INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id. "', '" .$times[$i] . "') <br/>";
-		$conn->query("INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id. "', '" .$times[$i] . "')");
+	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."','".$name."','".$email."','laptop')";
+	for($i = 0; $i < count($times); $i++) {
+		$conn->query("INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id."','".$times[$i]."')");
 	}
 	
 	for($i = 0; $i < count($subjects); $i++) {
-		echo "INSERT INTO ".($isTutor)."Subjects"." (ID_number, Time) VALUES ('".$id. "', '" .$subjects[$i] . "') <br/>";
-
-		$conn->query("INSERT INTO ".($isTutor)."Subjects"." (ID_number, Subject) VALUES ('".$id."', '".$subjects[$i]."')");
+		$conn->query("INSERT INTO ".($isTutor)."Times"." (ID_number, Subject) VALUES ('".$id."','".$subjects[$i]."');");
 	}
 
 
