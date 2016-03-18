@@ -25,20 +25,26 @@
 	$subjects = array();
 	
 	
-	echo count($tmpTimes)+ "<br/>";
 	
 	$count = 0;
 	for($i = 0; $i < count($tmpTimes); $i++) {
+		echo $tmpTimes[$i]. "<br>";
+
 		if($tmpTimes[$i] == "true") {	
+			echo "ASDGASDGSADGASD <br>";
+
 			$times[$count] = $timeKey[$i];
 		}
 	}
 	
-	echo count($tmpSubjects) + "<br/>";
 
 	$count = 0;
 	for($j = 0; $j < count($tmpSubjects); $j++) {
-		if($tmpSubjects[$j] == "true") {	
+		echo count($tmpSubjects) . "<br>";
+
+		if($tmpSubjects[$j] == "true") {
+			echo "pihjopihjfj <br>";
+
 			$subjects[$count] = $j;
 		}
 	}
@@ -57,7 +63,6 @@
  
  
 	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."', '" . $name . "', '".$email."','laptop')");
-	echo $name + "<br/>";
 	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."','".$name."','".$email."','laptop')";
 	for($i = 0; $i < count($times); $i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id."','".$times[$i]."')");
@@ -74,7 +79,7 @@
 	$result = $conn->query("SELECT * FROM tutors");
 	if ($result->num_rows > 0)
    		while($row = $result->fetch_assoc())
-        	echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br/>";
+        	echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
 	else
 		echo "0 results";
 	$conn->close();
