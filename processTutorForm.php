@@ -54,8 +54,8 @@
 	$conn->query("DELETE FROM ".($isTutor)."Subjects"." WHERE ID_number=".$id);
  
  
-	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."','".$name."','".$email."','laptop')");
-
+	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."', '" . $name . "', '".$email."','laptop')");
+	echo $name + "<br/>";
 	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES ('".$id."','".$name."','".$email."','laptop')";
 	for($i = 0; $i < count($times); $i++) {
 		$conn->query("INSERT INTO ".($isTutor)."Times"." (ID_number, Time) VALUES ('".$id."','".$times[$i]."')");
