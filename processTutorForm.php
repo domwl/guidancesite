@@ -23,8 +23,7 @@
 
 	$times = array();
 	$subjects = array();
-	
-	
+
 	
 	$count = 0;
 	for($i = 0; $i < count($tmpTimes); $i++) {
@@ -33,7 +32,7 @@
 		if($tmpTimes[$i] == "true") {	
 			echo "ASDGASDGSADGASD <br>";
 
-			$times[$count] = $timeKey[$i];
+			$times[$count] = =$i;
 		}
 	}
 	
