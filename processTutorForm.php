@@ -51,7 +51,7 @@
 	$conn->query("DELETE FROM ".($isTutor)."Subjects"." WHERE ID_number=".$id);
  
  
-	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '".$name."' , '" . $email . "')");
+	$conn->query("INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '" . $name . "' , '" . $email . "')");
 	
 	echo "INSERT INTO ".($isTutor)."s"." (ID_number, Name, Email, laptopName) VALUES (".$id.", '".$name."' , '" . $email . "') <br/>";
 

@@ -21,8 +21,8 @@ $studentTable = $connection->query("SELECT * FROM Requests ORDER BY Name");
 
 if(isset($_COOKIE["tutorID"]))
 {
-	$command = "INSERT INTO Sessions (tutorID, studentID, times, subjects)
-	VALUES ('" . $_COOKIE["tutorID"] . "', " . $_COOKIE["studentID"] . ", , )";
+	$command = "INSERT INTO Sessions (Tutor_ID, Student_ID, Time, Subject)
+	VALUES ('" . $_COOKIE["tutorID"] . "', " . $_COOKIE["studentID"] . ", 'Feature not finished' , 'TBA' )";
 	$connection->query($command);
 	unset($_COOKIE["studentID"]);
 }
@@ -84,17 +84,17 @@ function tutorConfirm(tutorID)
         echo "</table><table><tr><td>Name</td><td>ID</td><td>Email</td></tr>";
         $studentTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $_COOKIE["studentID"]);
         $studentSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $_COOKIE["studentID"]);
-		$tutorTable
         while ($row = mysqli_fetch_assoc($tutorTable))
         {
             $tutorsTimesTable = $connection->query("SELECT Times FROM RequestTimes WHERE ID_number=" . $row["id"]);
             $tutorsSubjectsTable = $connection->query("SELECT Times FROM RequestSubjects WHERE ID_number=" . $row["id"]);
-            while($sTRow = $studentTimesTable->fetch_assoc())
-                while($tTRow = $tutorsTimesTable->fetch_assoc())
-                    while($sSRow = $studentSubjectsTable->fetch_assoc())
-                        while($tSRow = $tutorsSubjectsTable->fetch_assoc())
-                            if($sTRow["Time"] == $tTRow["Time"] && $sSRow["Subject"] && $tSRow["Subject"])
-                                echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
+    
+			
+			$tutors = $connection->query($tutorQuery);
+			
+			while($tutorRow = mysqli_fetch_assoc($tutorTable)
+			
+			echo "<tr onclick=\"tutorConfirm('" . $row["id"] . "')\"><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["email"] . "</td></tr>";
         }
     }
     
